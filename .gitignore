@@ -60,4 +60,5 @@ android/app/libs
 android/keystores/debug.keystore
 
 # plugins
-js/plugins/*.bundle.js
+game/js/plugins/*.bundle.js
+game/

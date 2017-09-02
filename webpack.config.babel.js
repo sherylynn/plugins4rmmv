@@ -10,12 +10,12 @@ export default {
     ],
     devtool: 'inline-source-map',
     devServer: {
-      contentBase: './',
+      contentBase: './game/',
       hot: true
     },
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'js/plugins/')
+        path: path.resolve(__dirname, 'game/js/plugins/')
     },
     module: {
         loaders: [{
