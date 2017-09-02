@@ -60,4 +60,4 @@ android/app/libs
 android/keystores/debug.keystore
 
 # plugins
-js/plugins/build.js
+js/plugins/*.bundle.js
