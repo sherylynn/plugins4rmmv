@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import fs from 'fs';
 import path from 'path';
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+//const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 export default {
     cache: true,
@@ -10,7 +10,7 @@ export default {
     ],
     devtool: 'inline-source-map',
     devServer: {
-      contentBase: './game/',
+      contentBase: path.join(__dirname, "game"),
       hot: true
     },
     output: {
@@ -30,9 +30,11 @@ export default {
         }]
     },
     plugins: [
+        /*
         new HtmlWebpackPlugin({
             title: 'Hot Module Replacement'
           }),
+          */
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
     ],
