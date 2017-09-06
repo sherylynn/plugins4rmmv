@@ -14,7 +14,7 @@ export default {
       hot: true
     },
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'game/js/plugins/')
     },
     module: {

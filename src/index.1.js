@@ -1,5 +1,5 @@
 //just for init
-/*:
+/**
  *
  *
  * @plugindesc 测试的脚本
@@ -24,12 +24,10 @@ Scene_Map.prototype.createAllWindows=()=>{
   this.addChild(new VariableProgressBar.Window_Bar())
 }
 
-class VariableProgressBar_Window_Bar extends Window_Base {
+class VariableProgressBar.Window_Bar extends Window_Base {
   constructor(...args){
     super(...args)
     this.opacity=this.windowOpacity()
-    alert(1)
-    super.initialize('20','20','500','500')
   }
   initialize(){
     return super.initialize(this.windowPosition().x,this.windowPosition().y,windowWidth(),windowHeight())
@@ -46,8 +44,21 @@ class VariableProgressBar_Window_Bar extends Window_Base {
   windowOpacity(){
     return parseInt(VariableProgressBar.parameters['windowOpacity']||'50')
   }
-  show(){
 
-  }
 }
-let VariableProgressBar_Window_Bar_1 =new VariableProgressBar_Window_Bar()
+
+VariableProgressBar.Window_Bar=()=>{
+  this.initialize.apply(this,arguments)
+}
+
+
+//VariableProgressBar.Window_Bar.prototype=Object.create(Window_Base.prototype)
+VariableProgressBar.Window_Bar.prototype.constructor=VariableProgressBar.Window_Bar
+VariableProgressBar.Window_Bar.prototype.initialize=()=>{
+  let width=this.windowWidth()
+  let height=this.windowHeight()
+  let x=this.windowPosition().x
+  let y=this.windowPosition().y
+  Window_Base.prototype.initialize.call(this,x,y,width,height)
+  this.opacity=this.windowOpacity()
+}
