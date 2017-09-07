@@ -6,7 +6,30 @@ class Test {
   fuck(){
     return (''+this.x+''+this.y+'')
   }
+  mother(a){
+    console.log(a)
+    return (this.y+a)
+  }
 }
+//重写了父类的方法，用了assign
+let fuck_prototype=Test.prototype.mother
+Object.assign(Test.prototype,{
+  fuck(){
+    return 5
+  },
+  your(){
+    return (this.x*this.y)
+  },
+  mother(a){
+    fuck_prototype.call(this,a)
+    console.log('test')
+  }
+})
+let assignTest=new Test()
+//console.log(assignTest.fuck())
+//console.log(assignTest.your(10,5))
+assignTest.mother('mother')
+
 class newTest extends Test{
   constructor(x,y,color='green'){
     super(x,y)
@@ -17,8 +40,8 @@ class newTest extends Test{
   }
 }
 let test=new newTest()
-console.log(test.fuck())
-console.log(test.fuckAgain())
+//console.log(test.fuck())
+//console.log(test.fuckAgain())
 
 class fuckTest extends Test{
   constructor(...args){
@@ -29,8 +52,10 @@ class fuckTest extends Test{
   }
 }
 let fucktest=new fuckTest()
-console.log(fucktest.fuck())
+//console.log(fucktest.fuck())
 
+
+//继承 初始化
 class initTest extends Test{
   constructor(...args){
     super(...args)
@@ -46,5 +71,5 @@ class fuckInitTest extends initTest{
   }
 }
 let inittest=new fuckInitTest()
-console.log(inittest.fuck())
-console.log(inittest.y)
+//console.log(inittest.fuck())
+//console.log(inittest.y)
