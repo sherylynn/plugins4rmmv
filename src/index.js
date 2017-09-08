@@ -18,45 +18,23 @@
  *
  *
  */
-let params =PluginManager.parameters('main')
-let param1=Number(params['param1']) || 1024
-let param2=Number(params['param2']) || 768
-let setScreenSize=(x,y)=>{
-  let deltaX=x-window.innerWidth
-  let deltaY=y-window.innerHeight
-  window.moveBy(-deltaX/2,-deltaY/2)
-  window.resizeBy(deltaX,deltaY)
-}
-//#使用方法
-//setScreenSize(param1,param2)
 
-let _Game_Interpreter_pluginCommand =Game_Interpreter.prototype.pluginCommand
-Object.assign(Game_Interpreter.prototype,{
-  pluginCommand(command,args){
-    _Game_Interpreter_pluginCommand.call(this,command,args)
-    if (command === 'ChangeScreenSize') {
-      let _screenWidth=Number(args[0])||816
-      let _screenHeight=Number(args[1])||624
-      setScreenSize(_screenWidth, _screenHeight)
-    } else if (command === 'RestoreScreenSize') {
-      setScreenSize(816, 624)
-    } else {
-    }
-  }
-})
-
-class Scene_Splash extends Scene_Base{
+class Window_MapStatus extends Window_Base{
   constructor(...args){
     super(...args)
-    this.initialize()
-  }
-  initialize(){
-    super.initialize()
-  }
-  create(){
-    super.create()
-    this.logo-n
+    //this.initialize.call(this,...args)
+    this.initialize(...args)
+    //this.initialize.apply(this, arguments)
   }
 }
-Scene_Boot.prototype.start()
-Scene_Base.prototype.create()
+let _Scene_Map_prototype_createDisplayObject=Scene_Map.prototype.createDisplayObjects
+Object.assign(Scene_Map.prototype,{
+  createStatusWindow(){
+    this._StatusWindows=new Window_MapStatus(0,0,410,216)
+    this.addWindow(this._StatusWindows)
+  },
+  createDisplayObjects(){
+    _Scene_Map_prototype_createDisplayObject.call(this)
+    this.createStatusWindow()
+  }
+})
