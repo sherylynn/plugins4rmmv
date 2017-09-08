@@ -44,3 +44,19 @@ Object.assign(Game_Interpreter.prototype,{
     }
   }
 })
+
+class Scene_Splash extends Scene_Base{
+  constructor(...args){
+    super(...args)
+    this.initialize()
+  }
+  initialize(){
+    super.initialize()
+  }
+  create(){
+    super.create()
+    this.logo-n
+  }
+}
+Scene_Boot.prototype.start()
+Scene_Base.prototype.create()
