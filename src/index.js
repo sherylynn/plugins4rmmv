@@ -1,40 +1,39 @@
-/*:
- * @plugindesc 测试的脚本
- * @author sherylynn
- *
- * @param param1
- * @desc 参数1
- * 默认值 10
- * @default 10
- *
- * @param param2
- * @desc 参数2
- * 默认值 20
- * @default 20
- * @help new test for rmmv
- * 插件命令：
- *  ChangeScreenSize 1024 768 #修改分辨率为1024x768
- *  restoreScreenSize #恢复默认分辨率
- *
- *
- */
-
-class Window_MapStatus extends Window_Base{
-  constructor(...args){
-    super(...args)
-    //this.initialize.call(this,...args)
-    this.initialize(...args)
-    //this.initialize.apply(this, arguments)
-  }
+let hot=require('./hot.js')
+import hot2 from './hot2.js'
+window.hot=hot
+//后面的这个函数只响应了一次
+if(module.hot){
+  console.log('有热加载')
+  module.hot.accept('./hot.js',function(){
+    console.log('hot.js有热加载')
+    hot=require('./hot.js')//采用了node热加载时候的写法
+    hot()
+  })
+  module.hot.accept('./hot2.js',function(){
+    console.log('hot.js有热加载')//采用了官方的写法，另外发现如果不写module.hot.accept，就会默认直接刷新浏览器
+    hot2()
+  })
 }
-let _Scene_Map_prototype_createDisplayObject=Scene_Map.prototype.createDisplayObjects
-Object.assign(Scene_Map.prototype,{
-  createStatusWindow(){
-    this._StatusWindows=new Window_MapStatus(0,0,410,216)
-    this.addWindow(this._StatusWindows)
-  },
-  createDisplayObjects(){
-    _Scene_Map_prototype_createDisplayObject.call(this)
-    this.createStatusWindow()
+Scene_Boot.prototype.start = function () {
+  Scene_Base.prototype.start.call(this);
+  SoundManager.preloadImportantSounds();
+  if (DataManager.isBattleTest()) {
+    DataManager.setupBattleTest();
+    SceneManager.goto(Scene_Battle);
+  } else if (DataManager.isEventTest()) {
+    DataManager.setupEventTest();
+    SceneManager.goto(Scene_Map);
+  } else {
+    this.checkPlayerLocation();
+    DataManager.setupNewGame();
+    //SceneManager.goto(Scene_Title);
+    SceneManager.goto(Scene_Map);
+    Window_TitleCommand.initCommandPosition();
   }
-})
+  this.updateDocumentTitle();
+};
+
+
+ImageManager.loadTankwar = (filename, hue) => {
+  return ImageManager.loadBitmap('img/mndtankwar/', filename, hue, false)
+}

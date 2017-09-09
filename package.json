@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node_modules/.bin/webpack-dev-server",
-    "dev":"node_modules/.bin/webpack --watch"
+    "dev": "node_modules/.bin/webpack --watch"
   },
   "author": "",
   "license": "ISC",
@@ -25,7 +25,11 @@
     "babel-preset-es2017": "^6.24.1",
     "eslint": "^4.3.0",
     "eslint-plugin-react": "^7.1.0",
+    "html-loader": "^0.5.1",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^2.30.1"
   }
 }

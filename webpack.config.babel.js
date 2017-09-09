@@ -1,19 +1,16 @@
-import webpack from 'webpack';
-import fs from 'fs';
-import path from 'path';
-//const HtmlWebpackPlugin = require('html-webpack-plugin');
+import webpack from 'webpack'
+import path from 'path'
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 export default {
-  cache : true,
-  entry : ['./src/index.js'],
+  //cache : true,
+  entry : {
+    app:'./src/index.js'
+  },
   devtool : 'inline-source-map',
   devServer : {
-    contentBase: path.join(__dirname, "game"),
+    contentBase: path.join(__dirname, 'game'),
     hot: true
-  },
-  output : {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'game/js/plugins/')
   },
   module : {
     loaders: [
@@ -24,18 +21,23 @@ export default {
       }, {
         test: /\.json$/,
         loader: 'json-loader'
+      }, {
+        test: /\.html$/,
+        loader: 'html-loader'
       }
     ]
   },
   plugins : [
-    /*
-        new HtmlWebpackPlugin({
-            title: 'Hot Module Replacement'
-          }),
-          */
+    new HtmlWebpackPlugin({
+      template: 'game/index.html'
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   ],
+  output : {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'game/js/plugins/')
+  },
   resolve : {
     extensions: ['*', '.js', '.json']
   }
