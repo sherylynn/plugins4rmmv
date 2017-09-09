@@ -1,37 +1,27 @@
-let hot=require('./hot.js')
-import hot2 from './hot2.js'
-window.hot=hot
-//后面的这个函数只响应了一次
+let makeAnimFrames=require('./makeAnimFrames')
+let hot_Scene_Boot=require('./hot_Scene_Boot.js')
+let hot_Scene_TankWarTitle=require('./hot_Scene_TankWarTitle')
+let hot_Sprite_Bullet=require('./hot_Sprite_Bullet')
+let hot_Sprite_Explode=require('./hot_Sprite_Explode')
+hot_Scene_Boot()
+hot_Scene_TankWarTitle()
+hot_Sprite_Bullet()
+hot_Sprite_Explode()
 if(module.hot){
-  console.log('有热加载')
-  module.hot.accept('./hot.js',function(){
-    console.log('hot.js有热加载')
-    hot=require('./hot.js')//采用了node热加载时候的写法
-    hot()
+  module.hot.accept('./hot_Scene_Boot.js',function(){
+    hot_Scene_Boot=require('./hot_Scene_Boot')
+    hot_Scene_Boot()
   })
-  module.hot.accept('./hot2.js',function(){
-    console.log('hot.js有热加载')//采用了官方的写法，另外发现如果不写module.hot.accept，就会默认直接刷新浏览器
-    hot2()
+  module.hot.accept('./hot_Scene_TankWarTitle',function(){
+    hot_Scene_TankWarTitle=require('./hot_Scene_TankWarTitle')
+    hot_Scene_TankWarTitle()
+  })
+  module.hot.accept('./hot_Sprite_Bullet',function(){
+    hot_Sprite_Bullet=require('./hot_Sprite_Bullet')
+    hot_Sprite_Bullet()
   })
 }
-Scene_Boot.prototype.start = function () {
-  Scene_Base.prototype.start.call(this);
-  SoundManager.preloadImportantSounds();
-  if (DataManager.isBattleTest()) {
-    DataManager.setupBattleTest();
-    SceneManager.goto(Scene_Battle);
-  } else if (DataManager.isEventTest()) {
-    DataManager.setupEventTest();
-    SceneManager.goto(Scene_Map);
-  } else {
-    this.checkPlayerLocation();
-    DataManager.setupNewGame();
-    //SceneManager.goto(Scene_Title);
-    SceneManager.goto(Scene_Map);
-    Window_TitleCommand.initCommandPosition();
-  }
-  this.updateDocumentTitle();
-};
+
 
 
 ImageManager.loadTankwar = (filename, hue) => {
