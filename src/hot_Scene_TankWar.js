@@ -118,7 +118,7 @@ let hot_Scene_TankWar=()=>{
             this._playerBullets[i].y>=this._enemyTanks[ti].y-this._enemyTanks[ti].height/2&&
             this._playerBullets[i].y<=this._enemyTanks[ti].y+this._enemyTanks[ti].height/2
           ){
-
+//---------------------------------------------------------
           }
         }
       }
