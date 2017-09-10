@@ -99,7 +99,7 @@ let hot_Scene_TankWar=()=>{
           this._player.move()
         }
       }
-      for (let i=this._playerBullets.length-1;i>=;i--){
+      for (let i=this._playerBullets.length-1;i>=0;i--){
         this._playerBullets[i].move()
         if(this._playerBullets[i].x>=Graphics.boxWidth||
             this._playerBullets[i].x<=0||
@@ -107,6 +107,19 @@ let hot_Scene_TankWar=()=>{
             this._playerBullets[i].y<=0
         ){
           let outBullet=this._playerBullets.splice(i,1)[0]
+          this.removeChild(outBullet)
+        }
+      }
+      for (let i=this._playerBullets.length-1;i>=0;i--){
+        for (let ti =this._enemyTanks.length-1;i>=0;i--){
+          if(this._enemyTanks[ti].state!=Tank_State.Live) continue
+          if(this._playerBullets[i].x>=this._enemyTanks[ti].x-this._enemyTanks[ti].width/2&&
+            this._playerBullets[i].x<=this._enemyTanks[ti].x+this._enemyTanks[ti].width/2&&
+            this._playerBullets[i].y>=this._enemyTanks[ti].y-this._enemyTanks[ti].height/2&&
+            this._playerBullets[i].y<=this._enemyTanks[ti].y+this._enemyTanks[ti].height/2
+          ){
+
+          }
         }
       }
     }
