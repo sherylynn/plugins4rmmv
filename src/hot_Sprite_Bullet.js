@@ -10,5 +10,6 @@ let hot_Sprite_Bullet=()=>{
       this.velocity=new Point(0,0)
     }
   }
+  window.Sprite_Bullet=Sprite_Bullet
 }
 module.exports=hot_Sprite_Bullet

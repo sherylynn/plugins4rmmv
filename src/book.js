@@ -1,6 +1,6 @@
 Game_Player.prototype.checkEventTriggerTouch
 Bitmap.prototype.drawCircle
-
+Sprite_Base.prototype.look
 eventchaseplayer
 
 Game_CharacterBase.prototype.pos = function(x, y) {

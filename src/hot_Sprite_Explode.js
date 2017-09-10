@@ -32,5 +32,6 @@ let hot_Sprite_Explode=()=>{
       }
     }
   }
+  window.Sprite_Explode=Sprite_Explode
 }
 module.exports=hot_Sprite_Explode

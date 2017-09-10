@@ -21,5 +21,6 @@ let hot_Scene_TankWarTitle=()=>{
       }
     }
   }
+  window.Scene_TankWarTirle=Scene_TankWarTirle
 }
 module.exports=hot_Scene_TankWarTitle
