@@ -1,4 +1,5 @@
 /*
+////
 let hot_Scene_TankWar=()=>{
 
 }
@@ -16,12 +17,19 @@ let hot_Scene_TankWar=()=>{
       this._isGameOver=false
       this._maxEnemyCount=20
       this._eliminatedEnemy=0
+      this._desireFinishTick=120
       this._finishTick=0
       this._playerSpeed=2
       this._playerBullets=[]
       this._enemyTanks=[]
       this._enemyBullets=[]
       this._explodes=[]
+    }
+    checkIn(a,b){
+      return (a.x>=(b.x-b.width/2)&&
+      a.x<=(b.x+b.width/2)&&
+      a.y>=(b.y-b.height/2)&&
+      a.y<=(b.y+b.height/2))
     }
     loadTextures(){
       this._playerTexture=ImageManager.loadTankwar('TankPlayer')
@@ -111,15 +119,102 @@ let hot_Scene_TankWar=()=>{
         }
       }
       for (let i=this._playerBullets.length-1;i>=0;i--){
-        for (let ti =this._enemyTanks.length-1;i>=0;i--){
-          if(this._enemyTanks[ti].state!=Tank_State.Live) continue
-          if(this._playerBullets[i].x>=this._enemyTanks[ti].x-this._enemyTanks[ti].width/2&&
-            this._playerBullets[i].x<=this._enemyTanks[ti].x+this._enemyTanks[ti].width/2&&
-            this._playerBullets[i].y>=this._enemyTanks[ti].y-this._enemyTanks[ti].height/2&&
-            this._playerBullets[i].y<=this._enemyTanks[ti].y+this._enemyTanks[ti].height/2
+        for (let j =this._enemyTanks.length-1;j>=0;j--){
+          if(this._enemyTanks[j].state!=Tank_State.Live) continue
+          if(this.checkIn(this._playerBullets[i],this._enemyTanks[j])
           ){
-//---------------------------------------------------------
+            let deadBullet=this._playerBullets.splice(i,1)[0]
+            this.removeChild(deadBullet)
+            this._enemyTanks[j].hurt(1)
+            if(this._enemyTanks[j].hp<=0){
+              this._eliminatedEnemy++
+              this._isGameOver=(this._eliminatedEnemy>= this._maxEnemyCount)
+              this.createExplode(this._enemyTanks[j].x,this._enemyTanks[j].y)
+              AudioManager.playSe({
+                name:'Explosion1',
+                pan:0,
+                pitch:100,
+                volume:100
+              })
+            }
+            break
           }
+        }
+      }
+      for (let i=this._enemyTanks.length-1;i>=0;i--){
+        if(this._enemyTanks[i].state==Tank_State.Dead){
+          let deadTank=this._enemyTanks.splice(i,1)[0]
+          this.removeChild(deadTank)
+        }
+      }
+      if(!this._isGameOver){
+        for(let i in this._enemyTanks){
+          if(this._enemyTanks[i].canFire){
+            let bullet=this._enemyTanks[i].fire(this._bulletRedTexture)
+            this._enemyBullets.push(bullet)
+            this.addChild(bullet)
+          }
+        }
+      }
+      for(let i=this._enemyBullets.length-1;i>=0;i--){
+        if(this._enemyBullets[i].x>=Graphics.boxWidth||
+        this._enemyBullets[i].x<=0||
+        this._enemyBullets[i].y>=Graphics.boxHeight||
+        this._enemyBullets[i].y<=0){
+          let outBullet=this._enemyBullets.splice(i,1)[0]
+          this.removeChild(outBullet)
+        }
+      }
+      for(let i=this._enemyBullets.length-1;i>=0;i--){
+        if(this.checkIn(this._enemyBullets[i],this._player)){
+          let deadBullet=this._enemyBullets.splice(i,1)[0]
+          this.removeChild(deadBullet)
+          this._player.hurt(1)
+          if(this._player.hp<=0){
+            this.createExplode(this._player.x,this._player.y)
+            AudioManager.playSe({
+              name:'Explosion1',
+              pan:0,
+              pitch:100,
+              volume:100
+            })
+          }else{
+            AudioManager.playSe({
+              name:'Shot2',
+              pan:0,
+              pitch:100,
+              volume:100
+            })
+          }
+          break
+        }
+      }
+      if(!this._isGameOver&&this._player.state==Tank_State.Dead){
+        this.removeChild(this._player)
+        AudioManager.playSe({
+          name:'TankWarLost',
+          pan:0,
+          pitch:100,
+          volume:100
+        })
+        this._isGameOver=true
+        for(let i in this._enemyTanks){
+          this._enemyTank[i].isStop=true
+        }
+      }
+      for (let i=this._explodes.length-1;i>=0;i--){
+        if(this._explodes[i].isFinished){
+          let explode=this._explodes.splice(i,1)[0]
+          this.removeChild(explode)
+        }
+      }
+      if(this._isGameOver){
+        this._finishTick++
+        if(this._finishTick>=this._desireFinishTick){
+          let isWin=(this._player.state==Tank_State.Live)
+          SceneManager.push(Scene_TankWarTirle)
+          //SceneManager.push(Scene_TankWarGameOver)
+          //SceneManager.prepareNextScene(isWin)
         }
       }
     }

@@ -12,9 +12,10 @@ let hot_Scene_Boot=()=>{
     } else {
       this.checkPlayerLocation();
       DataManager.setupNewGame();
-      //SceneManager.goto(Scene_TankWarTitle)
+      SceneManager.goto(Scene_TankWarTitle)
+      //?
       //SceneManager.goto(Scene_Title);
-      SceneManager.goto(Scene_Map);
+      //SceneManager.goto(Scene_Map);
       Window_TitleCommand.initCommandPosition();
     }
     this.updateDocumentTitle();

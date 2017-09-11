@@ -10,7 +10,11 @@ export default {
   devtool : 'inline-source-map',
   devServer : {
     contentBase: path.join(__dirname, 'game'),
-    hot: true
+    hot: true,
+    publicPath:'/js/plugins/',
+    //需要设置一下位置
+    watchContentBase: true,
+    open:true
   },
   module : {
     loaders: [
@@ -36,7 +40,8 @@ export default {
   ],
   output : {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'game/js/plugins/')
+    path: path.resolve(__dirname, 'game/js/plugins/'),
+    publicPath:'/js/plugins/'
   },
   resolve : {
     extensions: ['*', '.js', '.json']

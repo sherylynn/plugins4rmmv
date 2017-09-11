@@ -19,7 +19,7 @@
  *
  */
 ///*
-let params =PluginManager.parameters('main')
+let params =PluginManager.parameters('app')
 let param1=Number(params['param1']) || 1024
 let param2=Number(params['param2']) || 768
 let setScreenSize=(x,y)=>{
