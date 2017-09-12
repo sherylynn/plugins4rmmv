@@ -12,7 +12,9 @@ Game_CharacterBase.prototype.checkEventTriggerTouchFront = function(d) {
   var y2 = $gameMap.roundYWithDirection(this._y, d);
   this.checkEventTriggerTouch(x2, y2);
 };
-
+Game_Event.prototype.updateSelfMovement
+Game_Event.prototype._self()
+this.moveAwayFromPlayer()
 Game_Event.prototype.moveTypeTowardPlayer = function() {
   if (this.isNearThePlayer()) {
     switch (Math.randomInt(6)) {
