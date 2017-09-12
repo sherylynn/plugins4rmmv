@@ -2,7 +2,8 @@ Game_Player.prototype.checkEventTriggerTouch
 Bitmap.prototype.drawCircle
 Sprite_Base.prototype.look
 eventchaseplayer
-
+Game_Interpreter.prototype
+$gameMap
 Game_CharacterBase.prototype.pos = function(x, y) {
   return this._x === x && this._y === y;
 };
