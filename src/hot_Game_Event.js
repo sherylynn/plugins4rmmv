@@ -18,7 +18,16 @@ let hot_Game_Event=()=>{
             break
         }
       }
+    },
+    /*
+    update(){
+      Game_Character.prototype.update.call(this);
+      this.checkEventTriggerAuto();
+      this.updateParallel();
+      this._erased = true;
+      this.refresh();
     }
+    */
   })
 }
 module.exports=hot_Game_Event

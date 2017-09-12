@@ -10,7 +10,14 @@ let hot_Game_Interpreter=()=>{
           console.log(this._eventId)
           this._self().erase()
           //$gameMap._events.splice(this._eventId,1)
-          console.log($gameMap._events)
+          //console.log($gameMap._events)
+        break
+        case "kill":
+        console.log(this._eventId)
+        this._self().clearPageSettings()
+        //$gameMap._events.splice(this._eventId,1)
+        //console.log($gameMap._events)
+        break
       }
       //console.log('真实坐标x'+$gameMap._events[this._eventId]._realX)
     },

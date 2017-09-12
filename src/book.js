@@ -1,9 +1,19 @@
 Game_Player.prototype.checkEventTriggerTouch
+
+Game_Player
 Bitmap.prototype.drawCircle
 Sprite_Base.prototype.look
 eventchaseplayer
 Game_Interpreter.prototype
 $gameMap
+Input
+Game_Event.prototype.clearPageSettings
+Game_Event.prototype.update
+
+this._erased = true;
+this.refresh();
+
+$gamePlayer
 Game_CharacterBase.prototype.pos = function(x, y) {
   return this._x === x && this._y === y;
 };
@@ -32,7 +42,7 @@ Game_Event.prototype.moveTypeTowardPlayer = function() {
     this.moveRandom();
   }
 };
-
+Scene_Map
 //直接跳转到地图
 SceneManager.goto(Scene_Map);
 //跳转到splash见 scene_splash
