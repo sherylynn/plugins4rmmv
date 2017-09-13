@@ -3,10 +3,29 @@ let hot_Scene_Map=()=>{
   Object.assign(Scene_Map.prototype,{
     update(){
       //Scene_Map_prototype_update.call(this)
+      //响应按钮跳跃  问题是还没把视角移动，并且边界判定
       //console.log(1)
       if(Input.isPressed('control')){
-        console.log($gameMap._events)
+        if(!$gamePlayer.isJumping()){
+          switch($gamePlayer._direction){
+            case 8:
+              $gamePlayer.jump(0,-2)
+              break
+            case 2:
+              $gamePlayer.jump(0,2)
+              break
+            case 4:
+              $gamePlayer.jump(-2,0)
+              break
+            case 6:
+              $gamePlayer.jump(2,0)
+              break
+          }
+        }
 
+        //响应按钮删掉所有事件
+        //console.log($gameMap._events)
+        /*
         for(let _e of $gameMap._events){
           if(!!_e){
             _e.erase()//是自己函数名写错了,erase没有下划线
@@ -14,6 +33,8 @@ let hot_Scene_Map=()=>{
             //_e.refresh()//由于事件列表的第一个是空函数，所以不行 //直接 _erase的方法不见了，只能用次一级的方法
           }
         }
+        */
+
 
         //$gameMap._events[2].clearPageSettings()
         //压根不生效，可能和场景自己的update冲突或者在this的获得有问题，因为总是undefined

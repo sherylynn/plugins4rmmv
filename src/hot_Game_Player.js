@@ -12,6 +12,7 @@ let hot_Game_Player=()=>{
   Object.assign(Game_Player.prototype,{
     update(){
       Game_Player_prototype_update.apply(this,arguments)
+      /*
       if(Input.isPressed('control')){
         for(let _e of $gameMap._events){
           if(!_e){
@@ -30,6 +31,7 @@ let hot_Game_Player=()=>{
         //原来error是出在第一个是空的
       }
       //console.log(1)
+      */
     }
   })
 

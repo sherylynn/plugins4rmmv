@@ -18,6 +18,11 @@ let hot_Game_Interpreter=()=>{
         //$gameMap._events.splice(this._eventId,1)
         //console.log($gameMap._events)
         break
+        case "归位":
+        this._self().locate(1,1)
+        //$gameMap._events.splice(this._eventId,1)
+        //console.log($gameMap._events)
+        break
       }
       //console.log('真实坐标x'+$gameMap._events[this._eventId]._realX)
     },

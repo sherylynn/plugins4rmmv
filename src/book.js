@@ -17,6 +17,7 @@ $gamePlayer
 Game_CharacterBase.prototype.pos = function(x, y) {
   return this._x === x && this._y === y;
 };
+Game_CharacterBase.prototype.setMoveSpeed
 Game_CharacterBase.prototype.checkEventTriggerTouchFront = function(d) {
   var x2 = $gameMap.roundXWithDirection(this._x, d);
   var y2 = $gameMap.roundYWithDirection(this._y, d);
