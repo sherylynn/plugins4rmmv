@@ -1,13 +1,13 @@
 {
   "name": "rmmv_plugins",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "plusgins for rmmv",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node_modules/.bin/webpack-dev-server",
     "start": "node_modules/.bin/webpack --watch",
-    "build":"node_modules/.bin/webpack"
+    "build":"node_modules/.bin/webpack --config webpack.config.build.js"
   },
   "author": "",
   "license": "ISC",
