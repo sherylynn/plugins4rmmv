@@ -23,6 +23,11 @@ let hot_Game_Interpreter=()=>{
         //$gameMap._events.splice(this._eventId,1)
         //console.log($gameMap._events)
         break
+        case "标记":
+        if(!$gamePlayer.isMoving()){
+          $gamePlayer.moveTowardCharacter(this._self())
+        }
+        break
       }
       //console.log('真实坐标x'+$gameMap._events[this._eventId]._realX)
     },
