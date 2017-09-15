@@ -1,5 +1,7 @@
 let hot_Input=require('./hot_Input')
 hot_Input()
+let hot_Game_Character=require('./hot_Game_Character')
+hot_Game_Character()
 let hot_Game_Player=require('./hot_Game_Player')
 hot_Game_Player()
 let hot_Game_Event=require('./hot_Game_Event')

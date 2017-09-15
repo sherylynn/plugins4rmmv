@@ -14,9 +14,21 @@ this._erased = true;
 this.refresh();
 
 $gamePlayer
+
+$gameMap._events //return [null,_event]
+$gameMap.events() //return [_event]
+
 Game_CharacterBase.prototype.pos = function(x, y) {
   return this._x === x && this._y === y;
 };
+
+var sx = this.deltaXFrom(character.x);
+var sy = this.deltaYFrom(character.y);
+
+$gameMap.distance
+
+$gameMap 的类和 基类是stage的scene_map不一样
+
 Game_CharacterBase.prototype.setMoveSpeed
 Game_CharacterBase.prototype.checkEventTriggerTouchFront = function(d) {
   var x2 = $gameMap.roundXWithDirection(this._x, d);

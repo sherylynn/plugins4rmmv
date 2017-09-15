@@ -1,6 +1,10 @@
 let hot_Scene_Map=()=>{
   let Scene_Map_prototype_update=Scene_Map.prototype.update
   Object.assign(Scene_Map.prototype,{
+    disFromCharacter(character_1,character_2){
+      return Math.abs(this.deltaX(character_1._realX, character_2._realX)) + Math.abs(this.deltaY(character_1._realY, character_2._realY))
+      //实际上没有this,因为Scene_Map不是$gameMap
+    },
     update(){
       //Scene_Map_prototype_update.call(this)
       //响应按钮跳跃  问题是还没把视角移动，并且边界判定
@@ -55,7 +59,7 @@ let hot_Scene_Map=()=>{
         }
         */
       }
-      if(Input.isPressed('control')){
+      if(Input.isPressed('shift')){
         if(!$gamePlayer.isMoving()){
           //$gamePlayer.moveTowardCharacter()
           $gamePlayer.setMoveSpeed(6)
@@ -110,9 +114,12 @@ let hot_Scene_Map=()=>{
         }
         */
       }
-      if(Input.isPressed('shift')){
+      if(Input.isPressed('control')){
+        console.log($gameMap.disFromCharacter($gamePlayer,$gameMap.events()[0]))
         if(!$gamePlayer.isMoving()){
           //$gamePlayer.moveTowardCharacter()
+          //$gamePlayer.turnTowardCharacter()
+          //$gameMap._event[1]
 
         }
       }
@@ -129,7 +136,7 @@ let hot_Scene_Map=()=>{
       }
       Scene_Map_prototype_update.call(this)
 
-    }
+    },
   })
 }
 module.exports=hot_Scene_Map
