@@ -1,5 +1,5 @@
 Game_Player.prototype.checkEventTriggerTouch
-
+DataManager 的一些下载属性其实很适合用来升级
 Game_Player
 Bitmap.prototype.drawCircle
 Sprite_Base.prototype.look
