@@ -5,7 +5,70 @@ Bitmap.prototype.drawCircle
 Sprite_Base.prototype.look
 eventchaseplayer
 Game_Interpreter.prototype
-$gameMap
+
+{
+  "id": 1,
+  "name": "EV001",
+  "note": "",
+  "pages": [
+    {
+      "conditions": {
+        "actorId": 1,
+        "actorValid": false,
+        "itemId": 1,
+        "itemValid": false,
+        "selfSwitchCh": "A",
+        "selfSwitchValid": false,
+        "switch1Id": 1,
+        "switch1Valid": false,
+        "switch2Id": 1,
+        "switch2Valid": false,
+        "variableId": 1,
+        "variableValid": false,
+        "variableValue": 0
+      },
+      "directionFix": false,
+      "image": {
+        "tileId": 0,
+        "characterName": "Actor3",
+        "direction": 2,
+        "pattern": 0,
+        "characterIndex": 0
+      },
+      "list": [
+        {
+          "code": 0,
+          "indent": 0,
+          "parameters": []
+        }
+      ],
+      "moveFrequency": 3,
+      "moveRoute": {
+        "list": [
+          {
+            "code": 0,
+            "parameters": []
+          }
+        ],
+        "repeat": true,
+        "skippable": false,
+        "wait": false
+      },
+      "moveSpeed": 3,
+      "moveType": 0,
+      "priorityType": 1,
+      "stepAnime": false,
+      "through": false,
+      "trigger": 0,
+      "walkAnime": true
+    }
+  ],
+  "x": 2,
+  "y": 6
+}
+
+$gameMap $dataMap
+$gameMap保存了生成的事件对象, $dataMap保存着事件对象的基础设定属性
 Input
 Game_Event.prototype.clearPageSettings
 Game_Event.prototype.update
