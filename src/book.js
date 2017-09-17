@@ -12,7 +12,7 @@ eventchaseplayer
 Game_Interpreter.prototype
 
 {
-  "id": 1,
+  "id": Number($dataMap.events.length),
   "name": "EV001",
   "note": "",
   "pages": [

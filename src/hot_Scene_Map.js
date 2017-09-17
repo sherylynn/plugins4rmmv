@@ -136,9 +136,8 @@ let hot_Scene_Map=()=>{
 
       }
       if(Input.isPressed('h')){
-        console.log('h')
-        console.log(this)
-        //$dataMap._evemt
+
+        $gamePlayer.skillCharacter()
 
       }
       Scene_Map_prototype_update.call(this)
