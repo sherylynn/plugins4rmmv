@@ -15,6 +15,7 @@ let hot_Input=()=>{
     40: 'down',     // down arrow
     45: 'escape',   // insert
     70: 'f',        // f
+    72: 'h',        // h
     81: 'pageup',   // Q
     87: 'pagedown', // W
     88: 'escape',   // X

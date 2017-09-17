@@ -115,7 +115,8 @@ let hot_Scene_Map=()=>{
         */
       }
       if(Input.isPressed('control')){
-        console.log($gameMap.disFromCharacter($gamePlayer,$gameMap.events()[0]))
+        SceneManager._scene._spriteset._tilemap.children.splice(8,1)
+        //console.log($gameMap.disFromCharacter($gamePlayer,$gameMap.events()[0]))
         if(!$gamePlayer.isMoving()){
           //$gamePlayer.moveTowardCharacter()
           //$gamePlayer.turnTowardCharacter()
@@ -132,6 +133,12 @@ let hot_Scene_Map=()=>{
         var hue2 = animation.animation2Hue
         ImageManager.requestAnimation(name1, hue1)
         ImageManager.requestAnimation(name2, hue2)
+
+      }
+      if(Input.isPressed('h')){
+        console.log('h')
+        console.log(this)
+        //$dataMap._evemt
 
       }
       Scene_Map_prototype_update.call(this)

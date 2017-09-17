@@ -1,5 +1,10 @@
 Game_Player.prototype.checkEventTriggerTouch
 DataManager 的一些下载属性其实很适合用来升级
+
+Scene_Map 中有 Spriteset_Map
+Spriteset_map.prototype.createCharacters
+Scene_Map.prototype.createSpriteset
+
 Game_Player
 Bitmap.prototype.drawCircle
 Sprite_Base.prototype.look
@@ -69,6 +74,19 @@ Game_Interpreter.prototype
 
 $gameMap $dataMap
 $gameMap保存了生成的事件对象, $dataMap保存着事件对象的基础设定属性
+$gameMap.prototype.setupEvents()
+
+//Scene_Map
+//掌管地图上的元素
+SceneManager._scene._spriteset.children[0]
+//地图上人物 //单独改变或者 loadTiteset 不改变绘制
+SceneManager._scene._spriteset._characterSprites
+//删去显示第一个事件
+SceneManager._scene._spriteset._tilemap.children.splice(8,1)
+SceneManager._scene._spriteset._tilemap.children.splice(4,1)
+SceneManager._scene._spriteset._tilemap.children.push(new Sprite_Character($gameMap._events[1]))
+Sprite_Character
+//一个个删除 除了第一个是确定的背景，其他的似乎是随机的
 Input
 Game_Event.prototype.clearPageSettings
 Game_Event.prototype.update
