@@ -10,22 +10,8 @@ let hot_Scene_Map=()=>{
       //响应按钮跳跃  问题是还没把视角移动，并且边界判定
       //console.log(1)
       if(Input.isPressed('space')){
-        if(!$gamePlayer.isJumping()){
-          switch($gamePlayer._direction){
-            case 8:
-              $gamePlayer.jump(0,-2)
-              break
-            case 2:
-              $gamePlayer.jump(0,2)
-              break
-            case 4:
-              $gamePlayer.jump(-2,0)
-              break
-            case 6:
-              $gamePlayer.jump(2,0)
-              break
-          }
-        }
+        $gamePlayer.jumpStraight()
+
 
         //响应按钮删掉所有事件
         //console.log($gameMap._events)

@@ -2,6 +2,10 @@ let hot_Game_Interpreter=()=>{
   Object.assign(Game_Interpreter.prototype,{
     本体(command){
       switch(command){
+        case "跳":
+          console.log('开始跳')
+          this._self()._moveType=5
+          break
         case "远离":
           console.log('开始远离')
           this._self()._moveType=4

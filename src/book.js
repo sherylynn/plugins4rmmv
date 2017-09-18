@@ -10,7 +10,7 @@ Bitmap.prototype.drawCircle
 Sprite_Base.prototype.look
 eventchaseplayer
 Game_Interpreter.prototype
-
+Game_CharacterBase.prototype.moveStraight()
 {
   "id": Number($dataMap.events.length),
   "name": "EV001",
