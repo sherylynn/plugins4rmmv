@@ -4,7 +4,8 @@ DataManager 的一些下载属性其实很适合用来升级
 Scene_Map 中有 Spriteset_Map
 Spriteset_map.prototype.createCharacters
 Scene_Map.prototype.createSpriteset
-
+let x2 =$gameMap.roundXWithDirection(x, d) 距离 方向一个格子  canPass 是通行判定
+let y2 =$gameMap.roundYWithDirection(y, d)
 Game_Player
 Bitmap.prototype.drawCircle
 Sprite_Base.prototype.look
