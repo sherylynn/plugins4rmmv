@@ -2,6 +2,8 @@ Game_Player.prototype.checkEventTriggerTouch
 DataManager 的一些下载属性其实很适合用来升级
 尝试cordova打包，无更新
 Scene_Map 中有 Spriteset_Map
+Window_Base()
+Scene_Map.prototype.createDisplayObjects
 Spriteset_map.prototype.createCharacters
 Scene_Map.prototype.createSpriteset
 let x2 =$gameMap.roundXWithDirection(x, d) 距离 方向一个格子  canPass 是通行判定

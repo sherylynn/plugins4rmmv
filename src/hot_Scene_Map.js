@@ -1,9 +1,15 @@
 let hot_Scene_Map=()=>{
   let Scene_Map_prototype_update=Scene_Map.prototype.update
+  let Scene_Map_createAllWindows=Scene_Map.prototype.createAllWindows
   Object.assign(Scene_Map.prototype,{
     disFromCharacter(character_1,character_2){
       return Math.abs(this.deltaX(character_1._realX, character_2._realX)) + Math.abs(this.deltaY(character_1._realY, character_2._realY))
       //实际上没有this,因为Scene_Map不是$gameMap
+    },
+    createAllWindows(){
+      Scene_Map_createAllWindows.call(this)
+      console.log('加载Winbar')
+      this.addWindow(new Window_Bar($gamePlayer._realX,$gamePlayer._realY,500,500))
     },
     update(){
       //Scene_Map_prototype_update.call(this)
