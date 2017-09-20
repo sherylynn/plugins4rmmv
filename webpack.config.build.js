@@ -1,6 +1,7 @@
 const webpack= require('webpack')
 const path =require('path')
 const packageInfo=require('./package.json')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 let release='app.'+packageInfo.version+'.js'
 module.exports={
   //cache : true,
@@ -21,7 +22,7 @@ module.exports={
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: [path.resolve(__dirname, "node_modules")]
+        exclude: [path.resolve(__dirname, 'node_modules')]
       }, {
         test: /\.json$/,
         loader: 'json-loader'
@@ -36,7 +37,15 @@ module.exports={
       compress: {
         warnings: false
       }
-    })
+    }),
+    new CopyWebpackPlugin([
+      // 打包出release
+      {
+        from: path.join(__dirname, 'game'),
+        to: path.resolve(__dirname, 'android/assets/www'),
+        toType: 'dir'
+      }
+    ])
   ],
   output : {
     filename: release,
