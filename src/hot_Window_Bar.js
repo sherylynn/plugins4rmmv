@@ -10,10 +10,13 @@ let hot_Window_Bar=()=>{
       console.log(this)
     }
     show(){
+      this.windowskin = ImageManager.loadSystem('')
       this.contents.fontSize=12
       this.contents.outlineWidth=0
       this.contents.textColor='red'
-      this.drawText('|||||||||',0,0,50,'left')
+      this.contents.fontFace='Arial'
+      //this.contents.fontFace='Consolas'
+      this.drawText('▇▇▇▇▇▇▇▇▇░░░░░░',0,0,50,'left')
 
     }
     update(){

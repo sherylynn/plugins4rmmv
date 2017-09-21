@@ -3,6 +3,7 @@ DataManager 的一些下载属性其实很适合用来升级
 尝试cordova打包，无更新
 Scene_Map 中有 Spriteset_Map
 Window_Base()
+Window_Base.prototype.loadWindowskin 窗口外形
 Scene_Map.prototype.createDisplayObjects
 Spriteset_map.prototype.createCharacters
 Scene_Map.prototype.createSpriteset
