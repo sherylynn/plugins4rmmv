@@ -10,13 +10,20 @@ let hot_Window_Bar=()=>{
       console.log(this)
     }
     show(){
-      this.contents.fontSize=24
-      this.drawText('测试',0,20,400,'center','#ff0000')
+      this.contents.fontSize=12
+      this.contents.outlineWidth=0
+      this.contents.textColor='red'
+      this.drawText('|||||||||',0,0,50,'left')
 
     }
     update(){
+      let width=50
+      let height=50
+      this._isWindow=false
+      this._margin=0
+      this._padding=0
       this.contents.clear()
-      this.move($gamePlayer.screenX(),$gamePlayer.screenY(),500,500)
+      this.move($gamePlayer.screenX()-width/2,$gamePlayer.screenY()-height/2-70,width,height)
       this.show()
     }
   }

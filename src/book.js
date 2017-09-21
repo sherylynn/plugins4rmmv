@@ -13,6 +13,7 @@ Bitmap.prototype.drawCircle
 Sprite_Base.prototype.look
 eventchaseplayer
 Game_Interpreter.prototype
+Game_Interpreter.prototype.command101  执行一些命令 比如显示字
 Game_CharacterBase.prototype.moveStraight()
 {
   "id": Number($dataMap.events.length),
