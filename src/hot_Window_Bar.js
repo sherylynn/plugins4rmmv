@@ -3,11 +3,15 @@ let hot_Window_Bar=()=>{
     constructor(...args){
       super(...args)
       //this.initialize.app
-      this.initialize(...args)
+      //集成的类似乎不用init也能用？？？？，这样依然会调用修改后的init一次，从console.log可以看出，可能哪里不对
+      //原来的写法会执行init2次
+      //this.initialize(...args)
     }
+
     initialize(){
       super.initialize.apply(this, arguments)
       console.log(this)
+
     }
     show(){
       this.windowskin = ImageManager.loadSystem('')
