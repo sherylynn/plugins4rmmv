@@ -28,8 +28,8 @@ let hot_Window_Bar=()=>{
       this.contents.textColor='red'
       this.contents.fontFace='Arial'
       //this.contents.fontFace='Consolas'
-      let hp=1
-      let max_hp=8
+      let hp=this._character._hp?this._character._hp:this._character._sprite_character._realFrame.width
+      let max_hp=this._character._max_hp?this._character._max_hp:this._character._sprite_character._realFrame.width
       this.drawText('▇'.repeat(hp)+'░'.repeat(max_hp-hp),0,0,48,'left')
 
     }
