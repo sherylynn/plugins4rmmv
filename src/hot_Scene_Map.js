@@ -9,7 +9,10 @@ let hot_Scene_Map=()=>{
     createAllWindows(){
       Scene_Map_createAllWindows.call(this)
       console.log('加载Winbar')
-      this.addWindow(new Window_Bar($gamePlayer._realX,$gamePlayer._realY,500,500))
+      this.addWindow(new Window_Bar($gamePlayer))
+      for(let _e of $gameMap.events()){
+        this.addWindow(new Window_Bar(_e))
+      }
     },
     update(){
       //Scene_Map_prototype_update.call(this)
