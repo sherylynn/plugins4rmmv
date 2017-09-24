@@ -21,6 +21,14 @@ let hot_Window_Bar=()=>{
 
     }
     */
+    windowLayer_add(){
+      SceneManager._scene.addWindow(this)//等同
+      //SceneManager._scene._windowLayer.removeChild(this)//结果这个不行
+    }
+    windowLayer_remove(){
+      SceneManager._scene._windowLayer.removeChild(this)
+
+    }
     show(){
       this.windowskin = ImageManager.loadSystem('')
       this.contents.fontSize=12
