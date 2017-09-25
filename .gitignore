@@ -61,7 +61,8 @@ android/keystores/debug.keystore
 
 # plugins
 game/js/plugins/*.bundle.js
-game/
+
+# game/
 
 # cordova
 android/build
