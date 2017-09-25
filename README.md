@@ -2,7 +2,7 @@
 plugins for rmmv
 
 # how to use
-git clone
+git clone --recursive https://github.com/sherylynn/plugins4rmmv
 
 put game project to game folder
 
