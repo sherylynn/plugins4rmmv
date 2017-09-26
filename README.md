@@ -1,5 +1,6 @@
 # plugins4rmmv
 plugins for rmmv
+可以结合作arpg使用，也可以单独作为开发的环境，支持热更新热加载，包含了cordova打包apk的功能
 
 # how to use
 git clone --recursive https://github.com/sherylynn/plugins4rmmv
