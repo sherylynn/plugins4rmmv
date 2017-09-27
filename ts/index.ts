@@ -1,4 +1,4 @@
-function greater(person){
+function greater(person:string){
   return "hello,"+person
 }
 let user='lynn'
