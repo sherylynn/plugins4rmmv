@@ -1,6 +1,8 @@
 Game_Player.prototype.checkEventTriggerTouch
 DataManager 的一些下载属性其实很适合用来升级
 尝试cordova打包，无更新
+
+fadeout 仅仅是创造了黑色的背景精灵 scene 的goto是设置了下一个场景并把上一个场景的激活关闭
 Scene_Map 中有 Spriteset_Map
 Window_Base()
 Window_Base.prototype.loadWindowskin 窗口外形
