@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "build/",
+    "allowJs": true,
     "outFile": "./game/js/plugins/app.js",
     "sourceMap": true,
     "noEmitOnError": false,
