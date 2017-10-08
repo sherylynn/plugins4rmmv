@@ -1,7 +1,7 @@
 {
   "name": "rmmv_plugins",
   "version": "0.0.1",
-  "description": "plusgins for rmmv",
+  "description": "plugins for rmmv",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,8 +9,15 @@
     "start": "node_modules/.bin/webpack --watch",
     "build": "node_modules/.bin/webpack --config webpack.config.build.js"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sherylynn/plugins4rmmv.git"
+  },
+  "keywords": [
+    "plugins4rmmv"
+  ],
+  "author": "sherylynn",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.8.0",
     "babel-core": "^6.22.1",
@@ -25,5 +32,9 @@
   },
   "dependencies": {
     "html-webpack-plugin": "^2.30.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/sherylynn/plugins4rmmv/issues"
+  },
+  "homepage": "https://github.com/sherylynn/plugins4rmmv#readme"
 }
