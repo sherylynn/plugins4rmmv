@@ -11,6 +11,7 @@ Spriteset_map.prototype.createCharacters
 Scene_Map.prototype.createSpriteset
 let x2 =$gameMap.roundXWithDirection(x, d) 距离 方向一个格子  canPass 是通行判定
 let y2 =$gameMap.roundYWithDirection(y, d)
+$gameSystem.disableMenu() 禁用菜单
 Game_Player
 Bitmap.prototype.drawCircle
 Sprite_Base.prototype.look

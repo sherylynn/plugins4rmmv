@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node_modules/.bin/webpack-dev-server",
     "start": "node_modules/.bin/webpack --watch",
-    "build": "node_modules/.bin/webpack --config webpack.config.build.js"
+    "build": "node_modules/.bin/webpack --config webpack.config.build.js",
+    "tsdev": "node server.js",
+    "fuck":"node_modules/.bin/webpack-dev-server --config webpack.config.ts.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   "author": "sherylynn",
   "license": "MIT",
   "devDependencies": {
+    "awesome-typescript-loader": "^3.2.3",
     "babel-cli": "^6.8.0",
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
@@ -26,12 +29,17 @@
     "copy-webpack-plugin": "^4.0.1",
     "eslint": "^4.3.0",
     "eslint-plugin-react": "^7.1.0",
+    "express": "^4.16.2",
     "html-loader": "^0.5.1",
+    "source-map-loader": "^0.2.1",
+    "typescript": "^2.5.2",
     "webpack": "^2.2.1",
+    "webpack-dev-middleware": "^1.12.0",
     "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
-    "html-webpack-plugin": "^2.30.1"
+    "html-webpack-plugin": "^2.30.1",
+    "socket.io": "^2.0.3"
   },
   "bugs": {
     "url": "https://github.com/sherylynn/plugins4rmmv/issues"
