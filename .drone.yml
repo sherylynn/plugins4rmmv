@@ -28,9 +28,23 @@ pipeline:
     #  - npm test
       - npm run build
   publish:
-    image: plugins/docker
-    repo: sherylynn/node_run
-    tags: [ 1.0.0, 1.0, latest ]
+    image: appleboy/drone-ssh
+    environment:
+      - PLUGIN_HOST=tx.18e.pub
+      - PLUGIN_USERNAME=ubuntu
+    volumes:
+      - /root/.ssh/id_rsa:/root/ssh/drone_rsa
+    key_path: /root/ssh/drone_rsa
+    script:
+      - cd plugins4rmmv
+      - git checkout .
+      - git pull
+
+#官方打包涉及到一开始完整的git克隆,条件不允许
+#  publish:
+#    image: plugins/docker
+#    repo: sherylynn/node_run
+#    tags: [ 1.0.0, 1.0, latest ]
   run:
     image: appleboy/drone-ssh
     environment:
