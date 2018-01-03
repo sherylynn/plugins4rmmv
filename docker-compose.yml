@@ -7,6 +7,8 @@ services:
       - 8080:8080
     volumes:
       - /home/ubuntu/plugins4rmmv:/root/plugins4rmmv
-    commands:
-      - cd /root/plugins4rmmv
-      - npm run dev
+    #commands:
+    #  - cd /root/plugins4rmmv
+    #  - npm run dev
+    command:
+      - ls
