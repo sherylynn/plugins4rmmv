@@ -26,6 +26,11 @@ pipeline:
     commands:
     #  - npm install --silent
     #  - npm test
+      - npm run build
+  publish:
+    image: plugins/docker
+    repo: sherylynn/node_run
+    tags: [ 1.0.0, 1.0, latest ]
   run:
     image: appleboy/drone-ssh
     environment:
@@ -37,5 +42,6 @@ pipeline:
     script:
       - cd plugins4rmmv
       - docker-compose -f docker-compose.yml stop
-      - docker-compose --project-directory="/root/plugins4rmmv"  -f docker-compose.yml up -d
+      - docker-compose -f docker-compose.yml up -d
+
 
