@@ -25,5 +25,12 @@ pipeline:
       - /home/ubuntu/plugins4rmmv:/go/src/tx.18e.pub/p/plugins4rmmv
     commands:
       - npm install --silent
-      - npm test
+    #  - npm test
+  run_server:
+    image: node:8.9.3
+    volumes:
+      - /home/ubuntu/plugins4rmmv:/go/src/tx.18e.pub/p/plugins4rmmv
+    commands:
+      - npm install --silent
+    detach: true
 
