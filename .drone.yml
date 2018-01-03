@@ -22,7 +22,7 @@ pipeline:
     #ports:
     #  - 8080:8080
     volumes:
-      - /home/ubuntu/plugins4rmmv:/drone/src/tx.18e.pub/p/plugins4rmmv
+      - /home/ubuntu/plugins4rmmv:/go/src/tx.18e.pub/p/plugins4rmmv
     commands:
       - npm install --silent
       - npm test
