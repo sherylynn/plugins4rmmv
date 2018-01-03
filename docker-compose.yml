@@ -2,7 +2,7 @@ version: '2'
 
 services:
   node-server:
-    image: sherylynn/node_run
+    image: sherylynn/docker_node_run
     ports:
       - 8080:8080
     volumes:
