@@ -1,0 +1,26 @@
+workspace:
+  base: /go
+  path: src/tx.18e.pub/p/plugins4rmmv
+
+clone:
+  ssh:
+    image: appleboy/drone-ssh
+    environment:
+      - PLUGIN_HOST=tx.18e.pub
+      - PLUGIN_USERNAME=ubuntu
+    volumes:
+      - /root/.ssh/id_rsa:/root/ssh/drone_rsa
+    key_path: /root/ssh/drone_rsa
+    script:
+      - cd plugins4rmmv
+      - git pull
+
+pipeline:
+  build:
+    image: node:8.9.3
+    volumes:
+      - /home/ubuntu/plugins4rmmv:/drone/src/tx.18e.pub/p/plugins4rmmv
+    commands:
+      - npm install --silent
+      - npm test
+
