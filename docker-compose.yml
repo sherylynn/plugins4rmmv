@@ -11,4 +11,4 @@ services:
     #  - cd /root/plugins4rmmv
     #  - npm run dev
     command:
-      - ls
+      - npm run dev
