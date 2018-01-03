@@ -13,6 +13,7 @@ clone:
     key_path: /root/ssh/drone_rsa
     script:
       - cd plugins4rmmv
+      - git checkout .
       - git pull
 
 pipeline:
