@@ -26,16 +26,11 @@ pipeline:
     commands:
     #  - npm install --silent
     #  - npm test
-  run:
-    image: appleboy/drone-ssh
-    environment:
-      - PLUGIN_HOST=tx.18e.pub
-      - PLUGIN_USERNAME=ubuntu
+  run_server:
+    image: node:8.9.3
     volumes:
-      - /root/.ssh/id_rsa:/root/ssh/drone_rsa
-    key_path: /root/ssh/drone_rsa
-    script:
-      - cd plugins4rmmv
-      - docker-compose -f docker-compose.yml stop
-      - docker-compose -f docker-compose.yml up -d
+      - /home/ubuntu/plugins4rmmv:/go/src/tx.18e.pub/p/plugins4rmmv
+    commands:
+      - npm run dev
+    detach: true
 

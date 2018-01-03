@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  node-server:
+    image: node:8.9.3
+    ports:
+      - 8080:8080
+    volumes:
+      - /home/ubuntu/plugins4rmmv:/root/plugins4rmmv
+    commands:
+      - cd /root/plugins4rmmv
+      - npm run dev
