@@ -11,9 +11,9 @@ export default {
   devServer : {
     contentBase: path.join(__dirname, 'game'),
     host: '0.0.0.0',
-    https:true,
+    //https:true,
     port: 8080,
-    //disableHostCheck: true,
+    disableHostCheck: true,
     hot: true,
     publicPath:'/js/plugins/',
     //需要设置一下位置
