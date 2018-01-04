@@ -12,6 +12,9 @@ export default {
     contentBase: path.join(__dirname, 'game'),
     //host: '0.0.0.0',
     //disableHostCheck: true,
+    allowedHosts: [
+      '.sherylynn.win'
+    ],
     hot: true,
     publicPath:'/js/plugins/',
     //需要设置一下位置
