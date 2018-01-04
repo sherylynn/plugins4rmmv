@@ -10,8 +10,8 @@ export default {
   devtool : 'inline-source-map',
   devServer : {
     contentBase: path.join(__dirname, 'game'),
-    host: '0.0.0.0',
-    disableHostCheck: true,
+    //host: '0.0.0.0',
+    //disableHostCheck: true,
     hot: true,
     publicPath:'/js/plugins/',
     //需要设置一下位置
