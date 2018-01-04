@@ -11,7 +11,6 @@ export default {
   devServer : {
     contentBase: path.join(__dirname, 'game'),
     host: '0.0.0.0',
-    https:true,
     port: 8080,
     disableHostCheck: true,
     hot: true,
