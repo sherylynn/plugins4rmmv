@@ -3,7 +3,6 @@ version: '2'
 services:
   node-server:
     image: sherylynn/docker_node_run
-    pull: true
     ports:
       - 8080:80
     volumes:
