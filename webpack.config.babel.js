@@ -12,7 +12,7 @@ export default {
     contentBase: path.join(__dirname, 'game'),
     host: '0.0.0.0',
     port: 80,
-    disableHostCheck: true,
+    //disableHostCheck: true,
     hot: true,
     publicPath:'/js/plugins/',
     //需要设置一下位置
