@@ -10,8 +10,7 @@ export default {
   devtool : 'inline-source-map',
   devServer : {
     contentBase: path.join(__dirname, 'game'),
-    //host: '0.0.0.0',
-    host:'game.sherylynn.win',
+    host: '0.0.0.0',
     //disableHostCheck: true,
     allowedHosts: ['game.sherylynn.win'],
     hot: true,
