@@ -4,6 +4,6 @@ services:
   node-server:
     image: sherylynn/docker_node_run
     ports:
-      - 8080:8080
+      - 127.0.0.1:8080:8080
     volumes:
       - /home/ubuntu/plugins4rmmv:/home/Service
