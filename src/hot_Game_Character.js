@@ -1,5 +1,11 @@
 let hot_Game_Character=()=>{
   Object.assign(Game_Character.prototype,{
+    maxPattern(){
+      return this.total_frame()
+    },
+    pattern(){
+      return this._pattern< this.total_frame() ? this._pattern:1
+    },
     distanceFromCharacter(character){
       return Math.abs(this.deltaXFrom(character.x)) + Math.abs(this.deltaYFrom(character.y))
     },

@@ -70,3 +70,7 @@ android/.gradle
 android/.idea
 android/local.properties
 android/assets/
+
+# vim
+*.swp
+tags

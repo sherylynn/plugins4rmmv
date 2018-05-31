@@ -1,6 +1,20 @@
 let hot_Sprite_Character=()=>{
   let Sprite_Character_prototype_initialize=Sprite_Character.prototype.initialize
   Object.assign(Sprite_Character.prototype,{
+    total_frame(){
+      // let 行走图帧数=7
+      return 7
+    },
+    //修改了原来的方法
+    patternWidth(){
+      if (this._tileId > 0) {
+        return $gameMap.tileWidth()
+      } else if (this._isBigCharacter) {
+        return this.bitmap.width / this.total_frame()
+      } else {
+        return this.bitmap.width / (this.total_frame()*4)
+      }
+    },
     tilemap_index(){
       this._tilemap_index=SceneManager._scene._spriteset._tilemap.children.findIndex((n)=>{
         return n===this

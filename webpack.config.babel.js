@@ -10,7 +10,7 @@ export default {
   devtool : 'inline-source-map',
   devServer : {
     contentBase: path.join(__dirname, 'game'),
-    host: '0.0.0.0',
+    host: '127.0.0.1',
     port: 8080,
     disableHostCheck: true,
     hot: true,
@@ -24,7 +24,7 @@ export default {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: [path.resolve(__dirname, "node_modules")]
+        exclude: [path.resolve(__dirname, 'node_modules')]
       }, {
         test: /\.json$/,
         loader: 'json-loader'
