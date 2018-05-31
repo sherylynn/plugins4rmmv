@@ -2,7 +2,9 @@ const webpack= require('webpack')
 const path =require('path')
 const packageInfo=require('./package.json')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-let release='app.'+packageInfo.version+'.js'
+//不打编号了，直接替换
+let release='app.js'
+//let release='app.'+packageInfo.version+'.js'
 module.exports={
   //cache : true,
   entry : {
