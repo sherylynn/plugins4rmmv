@@ -1,5 +1,9 @@
 let hot_Game_Character=()=>{
   Object.assign(Game_Character.prototype,{
+    total_frame(){
+      // let 行走图帧数=7
+      return 7
+    },
     maxPattern(){
       return this.total_frame()
     },
