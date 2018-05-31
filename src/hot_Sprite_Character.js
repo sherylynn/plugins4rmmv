@@ -12,7 +12,25 @@ let hot_Sprite_Character=()=>{
       } else if (this._isBigCharacter) {
         return this.bitmap.width / this.total_frame()
       } else {
-        return this.bitmap.width / (this.total_frame()*4)
+        return this.bitmap.width / this.total_frame()
+        //return this.bitmap.width / (this.total_frame()*4)
+      }
+    },patternHeight() {
+      if (this._tileId > 0) {
+          return $gameMap.tileHeight();
+      } else if (this._isBigCharacter) {
+          return this.bitmap.height / 4;
+      } else {
+        //因为是放了大图，就是不是由小图拼接的，所以直接设置了全部为大图模式
+          return this.bitmap.height / 4;
+      }
+  },
+    characterBlockX() {
+      if (this._isBigCharacter) {
+        return 0
+      } else {
+        var index = this._character.characterIndex()
+        return index % 4 * this.total_frame()
       }
     },
     tilemap_index(){

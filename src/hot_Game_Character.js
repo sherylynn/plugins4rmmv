@@ -10,6 +10,14 @@ let hot_Game_Character=()=>{
     pattern(){
       return this._pattern< this.total_frame() ? this._pattern:1
     },
+    updatePattern(){
+      if (!this.hasStepAnime() && this._stopCount > 0) {
+          //this.resetPattern(); 这里是设置停止的时候的图片序号，默认是1，需要设置为0
+          this._pattern=0
+      } else {
+      this._pattern = (this._pattern + 1) % (7 + 1)
+      }
+  },
     distanceFromCharacter(character){
       return Math.abs(this.deltaXFrom(character.x)) + Math.abs(this.deltaYFrom(character.y))
     },
