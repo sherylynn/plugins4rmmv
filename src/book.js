@@ -35,6 +35,9 @@ Graphics.height 整个画面的宽高
 that=this
 screenX是屏幕坐标
 $gameScreen.showPicture(1,'老旧昏暗',0,9,9,100,100,255,1)
+trigger 从01234开始依次对应rmmv里的事件
+event 事件触发  checkEventTriggerTouchFront
+Game_Player.prototype.checkEventTriggerHere
 //that=this
 //$gameScreen.showPicture(1,'老旧昏暗',0,that._self().screenX(),that._self().screenY(),100,100,255,1)
 
