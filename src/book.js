@@ -20,6 +20,24 @@ eventchaseplayer
 Game_Interpreter.prototype
 Game_Interpreter.prototype.command101  执行一些命令 比如显示字
 Game_CharacterBase.prototype.moveStraight()
+7帧 在Game_character中进行一些设定 pattern
+
+还有要在Sprite_Character中
+
+显示图片
+$gameScreen.showPicture(1,'老旧昏暗',0,0,0,100,100,255,1) 第一个参数是序号，无意义，第二个参数是图片名字，第三个是origin，然后 x,y 然后缩放，然后透明度，然后blendmode
+擦除图片
+$gameScreen.erasePicture(1)  这里是对应id
+photoshop blendmode
+pixi blendmode -> Graphics.BLEND_MULTIPLY
+Graphics.width
+Graphics.height 整个画面的宽高
+that=this
+screenX是屏幕坐标
+$gameScreen.showPicture(1,'老旧昏暗',0,9,9,100,100,255,1)
+//that=this
+//$gameScreen.showPicture(1,'老旧昏暗',0,that._self().screenX(),that._self().screenY(),100,100,255,1)
+
 {
   "id": Number($dataMap.events.length),
   "name": "EV001",

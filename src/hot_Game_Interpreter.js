@@ -35,6 +35,10 @@ let hot_Game_Interpreter=()=>{
       }
       //console.log('真实坐标x'+$gameMap._events[this._eventId]._realX)
     },
+    图片(name,blendmode){
+      //console.log(name,mode)
+      $gameScreen.showPicture(1,name,0,this._self().screenX(),this._self().screenY(),100,100,255,blendmode)
+    },
     _self(){
       return $gameMap._events[this._eventId]
     },
