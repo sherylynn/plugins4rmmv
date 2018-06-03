@@ -24,7 +24,11 @@ let hot_Scene_Map=()=>{
           //不知道Priority是什么，什么东西的优先级？
           //当事件可穿透的时候，可能是优先级相关的
           //if (event._trigger==2 && event.isNormalPriority() === normal) {
-          if (event._trigger==2) {
+          //if (event._trigger==2 ) {//隔空直接触发
+          //x或y在线上触发后才触发,角色会先走动到线上,等再次点击才触发
+          //或许需要其他方式,比如在move到点的时候触发
+          //trigger2时直接触发,0时面向触发
+          if (event._trigger==2 && ($gamePlayer._x==x||$gamePlayer._y==y)) {
             event.start()
           }
         })
