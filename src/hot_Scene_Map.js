@@ -28,7 +28,9 @@ let hot_Scene_Map=()=>{
           //x或y在线上触发后才触发,角色会先走动到线上,等再次点击才触发
           //或许需要其他方式,比如在move到点的时候触发
           //trigger2时直接触发,0时面向触发
-          if (event._trigger==2 && ($gamePlayer._x==x||$gamePlayer._y==y)) {
+          if (event._trigger==0 && ($gamePlayer._x==x||$gamePlayer._y==y)) {
+            event.start()
+          }else if(event._trigger==2){
             event.start()
           }
         })
@@ -37,14 +39,15 @@ let hot_Scene_Map=()=>{
     //地图检索触控事件
     processMapTouch(){
       let triggers_默认事件=2 //鼠标默认点击触发“事件接触”事件
+      //0时需要坐标一致才鼠标触发
       if (TouchInput.isTriggered() || this._touchCount > 0) {
         if (TouchInput.isPressed()) {
           if (this._touchCount === 0 || this._touchCount >= 15) {
             var x = $gameMap.canvasToMapX(TouchInput.x)
             var y = $gameMap.canvasToMapY(TouchInput.y)
             //引用了我的方法
-            console.log(1)
-            this._startEventByTouch(x, y, triggers_默认事件, true)
+            //先不开启，换成在Game_player类中开启，结合移动
+            //this._startEventByTouch(x, y, triggers_默认事件, true)
             $gameTemp.setDestination(x, y)
           }
           this._touchCount++
