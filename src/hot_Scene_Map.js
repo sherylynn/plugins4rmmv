@@ -20,7 +20,11 @@ let hot_Scene_Map=()=>{
       if (!$gameMap.isEventRunning()) {
         $gameMap.eventsXy(x, y).forEach(function(event) {
           //把事件触发event._trigger和传入的事件做比较
-          if (event._trigger==triggers && event.isNormalPriority() === normal) {
+          console.log(event)
+          //不知道Priority是什么，什么东西的优先级？
+          //当事件可穿透的时候，可能是优先级相关的
+          //if (event._trigger==2 && event.isNormalPriority() === normal) {
+          if (event._trigger==2) {
             event.start()
           }
         })
@@ -35,6 +39,7 @@ let hot_Scene_Map=()=>{
             var x = $gameMap.canvasToMapX(TouchInput.x)
             var y = $gameMap.canvasToMapY(TouchInput.y)
             //引用了我的方法
+            console.log(1)
             this._startEventByTouch(x, y, triggers_默认事件, true)
             $gameTemp.setDestination(x, y)
           }
