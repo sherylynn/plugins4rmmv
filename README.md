@@ -5,6 +5,8 @@ plugins for rmmv
 # how to use
 git clone --recursive https://github.com/sherylynn/plugins4rmmv
 
+git clone --recursive https://sherylynn.win/p/plugins4rmmv
+
 检索更新
 git submodule update --remote --merge
 推送修改
