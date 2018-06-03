@@ -6,6 +6,7 @@ let hot_Scene_Map=()=>{
       return Math.abs(this.deltaX(character_1._realX, character_2._realX)) + Math.abs(this.deltaY(character_1._realY, character_2._realY))
       //实际上没有this,因为Scene_Map不是$gameMap
     },
+    //改写了原生的窗口加载，实现加载的血条，现在可以去掉
     createAllWindows(){
       Scene_Map_createAllWindows.call(this)
       console.log('加载Winbar')
