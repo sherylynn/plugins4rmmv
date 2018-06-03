@@ -39,7 +39,8 @@ $gameScreen.showPicture(1,'老旧昏暗',0,9,9,100,100,255,1)
 然后再checkEventTriggerTouchFront
 意思是只判断移动的前方
 
-Game_Player.prototype.moveByInput 用户移动判断
+Game_Player.prototype.moveByInput 用户移动判断  更新了群主要求制作的先移动至最近位置后再触发的插件，把移动放在了Game_player类里，如果要直接触发，还是放SceneMap里为佳
+
 $gameTemp.setDestination 即将点击的位置座标
 Scene_Map.prototype.processMapTouch 输入判定
 $gameTemp._destinationX 是x Y是Y
