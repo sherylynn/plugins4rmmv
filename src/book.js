@@ -35,6 +35,14 @@ Graphics.height 整个画面的宽高
 that=this
 screenX是屏幕坐标
 $gameScreen.showPicture(1,'老旧昏暗',0,9,9,100,100,255,1)
+事件触发原理:先Game_CharacterBase.prototype.moveStraight
+然后再checkEventTriggerTouchFront
+意思是只判断移动的前方
+
+Game_Player.prototype.moveByInput 用户移动判断
+$gameTemp.setDestination 即将点击的位置座标
+Scene_Map.prototype.processMapTouch 输入判定
+$gameTemp._destinationX 是x Y是Y
 trigger 从01234开始依次对应rmmv里的事件
 event 事件触发  checkEventTriggerTouchFront
 Game_Player.prototype.checkEventTriggerHere

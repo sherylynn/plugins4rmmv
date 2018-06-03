@@ -14,6 +14,35 @@ let hot_Scene_Map=()=>{
         this.addWindow(new Window_Bar(_e))
       }
     },
+    //鼠标触发事件
+    _startEventByTouch(x,y,triggers,normal){
+      if (!$gameMap.isEventRunning()) {
+        $gameMap.eventsXy(x, y).forEach(function(event) {
+          //把事件触发event._trigger和传入的事件做比较
+          if (event._trigger==triggers && event.isNormalPriority() === normal) {
+            event.start()
+          }
+        })
+      }
+    },
+    //地图检索触控事件
+    processMapTouch(){
+      let triggers_默认事件=2 //鼠标默认点击触发“事件接触”事件
+      if (TouchInput.isTriggered() || this._touchCount > 0) {
+        if (TouchInput.isPressed()) {
+          if (this._touchCount === 0 || this._touchCount >= 15) {
+            var x = $gameMap.canvasToMapX(TouchInput.x)
+            var y = $gameMap.canvasToMapY(TouchInput.y)
+            //引用了我的方法
+            this._startEventByTouch(x, y, triggers_默认事件, true)
+            $gameTemp.setDestination(x, y)
+          }
+          this._touchCount++
+        } else {
+          this._touchCount = 0
+        }
+      }
+    },
     update(){
       //Scene_Map_prototype_update.call(this)
       //响应按钮跳跃  问题是还没把视角移动，并且边界判定
