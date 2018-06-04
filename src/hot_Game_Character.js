@@ -2,7 +2,7 @@ let hot_Game_Character=()=>{
   Object.assign(Game_Character.prototype,{
     total_frame(){
       // let 行走图帧数=7
-      return 7
+      return 9
     },
     maxPattern(){
       return this.total_frame()
@@ -15,7 +15,7 @@ let hot_Game_Character=()=>{
           //this.resetPattern(); 这里是设置停止的时候的图片序号，默认是1，需要设置为0
           this._pattern=0
       } else {
-      this._pattern = (this._pattern + 1) % (7 + 1)
+      this._pattern = (this._pattern + 1) % (this.total_frame() + 1)
       }
   },
     distanceFromCharacter(character){

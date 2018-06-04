@@ -3,7 +3,7 @@ let hot_Sprite_Character=()=>{
   Object.assign(Sprite_Character.prototype,{
     total_frame(){
       // let 行走图帧数=7
-      return 7
+      return 9
     },
     //修改了原来的方法
     patternWidth(){
