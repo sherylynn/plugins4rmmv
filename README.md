@@ -3,6 +3,11 @@ plugins for rmmv
 可以结合作arpg使用，也可以单独作为开发的环境，支持热更新热加载，包含了cordova打包apk的功能
 
 # how to use
+浅克隆
+git clone --depth 1 https://sherylynn.win/p/plugins4rmmv
+
+git clone --depth 1 https://sherylynn.win/p/game
+
 git clone --recursive https://github.com/sherylynn/plugins4rmmv
 
 git clone --recursive https://sherylynn.win/p/plugins4rmmv
