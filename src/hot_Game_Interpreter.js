@@ -2,32 +2,32 @@ let hot_Game_Interpreter=()=>{
   Object.assign(Game_Interpreter.prototype,{
     本体(command){
       switch(command){
-        case "跳":
-          console.log('开始跳')
-          this._self()._moveType=5
-          break
-        case "远离":
-          console.log('开始远离')
-          this._self()._moveType=4
+      case '跳':
+        console.log('开始跳')
+        this._self()._moveType=5
         break
-        case "消失":
-          console.log(this._eventId)
-          this._self().erase()
-          //$gameMap._events.splice(this._eventId,1)
-          //console.log($gameMap._events)
+      case '远离':
+        console.log('开始远离')
+        this._self()._moveType=4
         break
-        case "kill":
+      case '消失':
+        console.log(this._eventId)
+        this._self().erase()
+        //$gameMap._events.splice(this._eventId,1)
+        //console.log($gameMap._events)
+        break
+      case 'kill':
         console.log(this._eventId)
         this._self().clearPageSettings()
         //$gameMap._events.splice(this._eventId,1)
         //console.log($gameMap._events)
         break
-        case "归位":
+      case '归位':
         this._self().locate(1,1)
         //$gameMap._events.splice(this._eventId,1)
         //console.log($gameMap._events)
         break
-        case "标记":
+      case '标记':
         if(!$gamePlayer.isMoving()){
           $gamePlayer.moveTowardCharacter(this._self())
         }
@@ -35,9 +35,21 @@ let hot_Game_Interpreter=()=>{
       }
       //console.log('真实坐标x'+$gameMap._events[this._eventId]._realX)
     },
-    图片(name,blendmode){
+    图片(id,name,blendmode,new_z){
       //console.log(name,mode)
-      $gameScreen.showPicture(1,name,0,this._self().screenX(),this._self().screenY(),100,100,255,blendmode)
+      //id是图片的序号，name是图名称，z是图位置，new_z负数时直接不出现，0时闪动，1时在图上但是人物的下面，因为人物的z是3，所以4以上时在人物上面
+      $gameScreen.showPicture(id,name,0,this._self().screenX(),this._self().screenY(),100,100,255,blendmode)
+      if (new_z!=null) {
+        //把绘制图片时的图片精灵提取到$fuck 里
+        let $fuck=SceneManager._scene._spriteset._pictureContainer.children[id-1]
+        // 展示一下将去的位置，但是这位置会随着变化
+        let $fuck_new=SceneManager._scene._spriteset._tilemap.children[0]
+        if($fuck._pictureName==name){//避免add children后消失出错，add child后原来的地方就会消失掉图
+          $fuck.z=new_z
+          SceneManager._scene._spriteset._tilemap.addChild($fuck)
+        }
+        //$fuck_new.z=new_z
+      }
     },
     _self(){
       return $gameMap._events[this._eventId]

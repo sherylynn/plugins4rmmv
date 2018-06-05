@@ -26,6 +26,77 @@ Game_CharacterBase.prototype.moveStraight()
 
 显示图片
 $gameScreen.showPicture(1,'老旧昏暗',0,0,0,100,100,255,1) 第一个参数是序号，无意义，第二个参数是图片名字，第三个是origin，然后 x,y 然后缩放，然后透明度，然后blendmode
+createPictures
+通过这个pictureid导入
+Sprite_Picture.prototype.picture = function() {
+  return $gameScreen.picture(this._pictureId);
+};
+Sprite_Picture 就算强行调z值，似乎也不影响上下文?
+
+
+不同图层靠 this.addChild(this.lowerZLayer = new PIXI.tilemap.ZLayer(this, 0));  这个ZLayer中才有Z值，普通的显示图片是没这个值的，而且和其他图不在一个layer中，就算设定了可能也无效
+rmmv中是靠建了lowlayer uplayer来填充sprite的来显示高低
+lowerZLayer中又有lowerlayer upperZLayer中又有upperlayer
+主角在lowerZlayer中
+Scene_Map._spriteset<=Spriteset_Map._tilemap<=ShaderTilemap
+SceneManager._scene._spriteset
+ScreenZ setPriorityType
+SceneManager._scene._spriteset._tilemap.lowerZLayer
+_tilemap中先添加了图块。后添加了角色characterSprites。我可以尝试直接添加图片
+
+SceneManager._scene._spriteset._tilemap.lowerZLayer.addChild($fuck.children[0])///唯一成功的把图片添加到lowerZLayer里去
+
+SceneManager._scene._spriteset._tilemap.addChild($fuck.children[0]) //添加到shadertilemap层里
+
+//报错
+Spriteset_Base.prototype.createPictures = function() {
+  var width = Graphics.boxWidth;
+  var height = Graphics.boxHeight;
+  var x = (Graphics.width - width) / 2;
+  var y = (Graphics.height - height) / 2;
+  this._pictureContainer = new Sprite();
+  this._pictureContainer.setFrame(x, y, width, height);
+  for (var i = 1; i <= $gameScreen.maxPictures(); i++) {
+      let Sprite_Picture_Z=new Sprite_Picture(i)
+      Sprite_Picture_Z.z=0
+      this._pictureContainer.addChild(Sprite_Picture_Z);
+  }
+  $fuck=this._pictureContainer
+  this.addChild(this._pictureContainer);
+};
+
+$fuck就是SceneManager._scene._spriteset._pictureContainer
+id 就是 children[id-1]
+let $fuck=SceneManager._scene._spriteset._pictureContainer.children[id-1]
+$fuck.z=-1
+SceneManager._scene._spriteset._tilemap.addChild($fuck)
+
+
+Spriteset_Base.prototype.createUpperLayer = function() {
+  this.createPictures();
+  this.createTimer();
+  this.createScreenSprites();
+};
+
+Spriteset_Map.prototype.createCharacters = function() {
+    this._characterSprites = [];
+    $gameMap.events().forEach(function(event) {
+        this._characterSprites.push(new Sprite_Character(event));
+    }, this);
+    $gameMap.vehicles().forEach(function(vehicle) {
+        this._characterSprites.push(new Sprite_Character(vehicle));
+    }, this);
+    $gamePlayer.followers().reverseEach(function(follower) {
+        this._characterSprites.push(new Sprite_Character(follower));
+    }, this);
+    this._characterSprites.push(new Sprite_Character($gamePlayer));
+    for (var i = 0; i < this._characterSprites.length; i++) {
+        this._tilemap.addChild(this._characterSprites[i]);
+    }
+};
+
+以前都查过，现在又忘记了
+
 擦除图片
 $gameScreen.erasePicture(1)  这里是对应id
 photoshop blendmode
@@ -50,66 +121,7 @@ Game_Player.prototype.checkEventTriggerHere
 //that=this
 //$gameScreen.showPicture(1,'老旧昏暗',0,that._self().screenX(),that._self().screenY(),100,100,255,1)
 
-{
-  "id": Number($dataMap.events.length),
-  "name": "EV001",
-  "note": "",
-  "pages": [
-    {
-      "conditions": {
-        "actorId": 1,
-        "actorValid": false,
-        "itemId": 1,
-        "itemValid": false,
-        "selfSwitchCh": "A",
-        "selfSwitchValid": false,
-        "switch1Id": 1,
-        "switch1Valid": false,
-        "switch2Id": 1,
-        "switch2Valid": false,
-        "variableId": 1,
-        "variableValid": false,
-        "variableValue": 0
-      },
-      "directionFix": false,
-      "image": {
-        "tileId": 0,
-        "characterName": "Actor3",
-        "direction": 2,
-        "pattern": 0,
-        "characterIndex": 0
-      },
-      "list": [
-        {
-          "code": 0,
-          "indent": 0,
-          "parameters": []
-        }
-      ],
-      "moveFrequency": 3,
-      "moveRoute": {
-        "list": [
-          {
-            "code": 0,
-            "parameters": []
-          }
-        ],
-        "repeat": true,
-        "skippable": false,
-        "wait": false
-      },
-      "moveSpeed": 3,
-      "moveType": 0,
-      "priorityType": 1,
-      "stepAnime": false,
-      "through": false,
-      "trigger": 0,
-      "walkAnime": true
-    }
-  ],
-  "x": 2,
-  "y": 6
-}
+
 
 $gameMap $dataMap
 $gameMap保存了生成的事件对象, $dataMap保存着事件对象的基础设定属性
@@ -179,3 +191,64 @@ Scene_Map
 //直接跳转到地图
 SceneManager.goto(Scene_Map);
 //跳转到splash见 scene_splash
+
+{
+  "id": Number($dataMap.events.length),
+  "name": "EV001",
+  "note": "",
+  "pages": [
+    {
+      "conditions": {
+        "actorId": 1,
+        "actorValid": false,
+        "itemId": 1,
+        "itemValid": false,
+        "selfSwitchCh": "A",
+        "selfSwitchValid": false,
+        "switch1Id": 1,
+        "switch1Valid": false,
+        "switch2Id": 1,
+        "switch2Valid": false,
+        "variableId": 1,
+        "variableValid": false,
+        "variableValue": 0
+      },
+      "directionFix": false,
+      "image": {
+        "tileId": 0,
+        "characterName": "Actor3",
+        "direction": 2,
+        "pattern": 0,
+        "characterIndex": 0
+      },
+      "list": [
+        {
+          "code": 0,
+          "indent": 0,
+          "parameters": []
+        }
+      ],
+      "moveFrequency": 3,
+      "moveRoute": {
+        "list": [
+          {
+            "code": 0,
+            "parameters": []
+          }
+        ],
+        "repeat": true,
+        "skippable": false,
+        "wait": false
+      },
+      "moveSpeed": 3,
+      "moveType": 0,
+      "priorityType": 1,
+      "stepAnime": false,
+      "through": false,
+      "trigger": 0,
+      "walkAnime": true
+    }
+  ],
+  "x": 2,
+  "y": 6
+}

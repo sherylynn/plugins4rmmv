@@ -47,6 +47,7 @@ let hot_Scene_Map=()=>{
             var y = $gameMap.canvasToMapY(TouchInput.y)
             //引用了我的方法
             //先不开启，换成在Game_player类中开启，结合移动
+            //-----------------------------------------------------------------!!!!!!!!!
             //this._startEventByTouch(x, y, triggers_默认事件, true)
             $gameTemp.setDestination(x, y)
           }
