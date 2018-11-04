@@ -16,11 +16,11 @@ function sendStatusToWindow(text) {
 function createWindow() {
   // Create the browser window.
   log.info('starting');
-  win = new BrowserWindow({ width: 800, height: 600, });
+  win = new BrowserWindow({ width: 864, height: 720, });
 
   // and load the index.html of the app.
   // win.loadFile('/build/generic/web/viewer.html')
-  win.loadURL(path.join('file://', __dirname, '/build/generic/web/viewer.html'));
+  win.loadURL(path.join('file://', __dirname, '/game/index.html'));
   if (debug) {
   // Open the DevTools.
   win.webContents.openDevTools();

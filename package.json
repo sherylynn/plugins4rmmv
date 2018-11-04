@@ -1,5 +1,5 @@
 {
-  "name": "rmmv_plugins",
+  "name": "pi",
   "version": "0.0.1",
   "main": "main.js",
   "author": "sherylynn",
@@ -36,7 +36,7 @@
     "start": "node_modules/.bin/webpack --watch",
     "build": "node_modules/.bin/webpack --config webpack.config.build.js",
     "tsdev": "node server.js",
-    "fuck":"node_modules/.bin/webpack-dev-server --config webpack.config.ts.js",
+    "fuck": "node_modules/.bin/webpack-dev-server --config webpack.config.ts.js",
     "app": "electron ./ --debug",
     "dist_all": "electron-builder -mwl ",
     "dist_win": "electron-builder --win ",
@@ -47,7 +47,7 @@
     "pub_all": "build --mac --win --linux --publish always"
   },
   "build": {
-    "appId": "com.sherylynn.pdf-sync",
+    "appId": "com.sherylynn.pi",
     "mac": {
       "target": [
         {
@@ -101,9 +101,10 @@
         "private": false,
         "owner": "sherylynn",
         "releaseType": "release"
-      },{
+      },
+      {
         "provider": "generic",
-        "url":"your_url"
+        "url": "your_url"
       }
     ],
     "directories": {
@@ -112,18 +113,10 @@
     },
     "files": [
       "**/*",
-      "!test",
+      "!android",
       "!src",
-      "!build/app",
-      "!tmp",
-      "!db",
-      "!docs",
-      "!examples",
-      "!extenxions",
-      "!external",
-      "!l10n",
-      "!src",
-      "!test",
+      "!build",
+      "!ts",
       "!web"
     ]
   },
@@ -135,7 +128,6 @@
     "plugins4rmmv"
   ],
   "license": "MIT",
-
   "bugs": {
     "url": "https://github.com/sherylynn/plugins4rmmv/issues"
   },

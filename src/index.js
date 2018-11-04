@@ -1,3 +1,6 @@
+let hot_Utils=require('./hot_Utils')
+hot_Utils()
+console.log(Utils.isNwjs)
 let hot_Input=require('./hot_Input')
 hot_Input()
 let hot_Game_Character=require('./hot_Game_Character')
