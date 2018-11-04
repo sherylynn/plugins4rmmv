@@ -1,25 +1,10 @@
 {
   "name": "rmmv_plugins",
   "version": "0.0.1",
-  "description": "plugins for rmmv",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node_modules/.bin/webpack-dev-server --config webpack.config.babel.js",
-    "start": "node_modules/.bin/webpack --watch",
-    "build": "node_modules/.bin/webpack --config webpack.config.build.js",
-    "tsdev": "node server.js",
-    "fuck":"node_modules/.bin/webpack-dev-server --config webpack.config.ts.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sherylynn/plugins4rmmv.git"
-  },
-  "keywords": [
-    "plugins4rmmv"
-  ],
+  "main": "main.js",
   "author": "sherylynn",
-  "license": "MIT",
+  "email": "352281674@qq.com",
+  "description": "plugins for rmmv",
   "devDependencies": {
     "awesome-typescript-loader": "^3.2.3",
     "babel-cli": "^6.8.0",
@@ -35,12 +20,122 @@
     "typescript": "^2.5.2",
     "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.12.0",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "^2.7.1",
+    "html-webpack-plugin": "^2.30.1",
+    "socket.io": "^2.0.3",
+    "electron": "^2.0.12",
+    "electron-builder": "^20.28.4"
   },
   "dependencies": {
-    "html-webpack-plugin": "^2.30.1",
-    "socket.io": "^2.0.3"
+    "electron-log": "^2.2.17",
+    "electron-updater": "^3.1.2"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node_modules/.bin/webpack-dev-server --config webpack.config.babel.js",
+    "start": "node_modules/.bin/webpack --watch",
+    "build": "node_modules/.bin/webpack --config webpack.config.build.js",
+    "tsdev": "node server.js",
+    "fuck":"node_modules/.bin/webpack-dev-server --config webpack.config.ts.js",
+    "app": "electron ./ --debug",
+    "dist_all": "electron-builder -mwl ",
+    "dist_win": "electron-builder --win ",
+    "dist_mac": "electron-builder --mac ",
+    "dist_arm": "electron-builder --linux --armv7l",
+    "dist_deb": "electron-builder --linux ",
+    "pub_win": "build --win --publish always",
+    "pub_all": "build --mac --win --linux --publish always"
+  },
+  "build": {
+    "appId": "com.sherylynn.pdf-sync",
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64",
+            "armv7l"
+          ]
+        }
+      ],
+      "maintainer": "sherylynn"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "runAfterFinish": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "vPrefixedTagName": true,
+        "private": false,
+        "owner": "sherylynn",
+        "releaseType": "release"
+      },{
+        "provider": "generic",
+        "url":"your_url"
+      }
+    ],
+    "directories": {
+      "buildResources": "./",
+      "output": "./build/app"
+    },
+    "files": [
+      "**/*",
+      "!test",
+      "!src",
+      "!build/app",
+      "!tmp",
+      "!db",
+      "!docs",
+      "!examples",
+      "!extenxions",
+      "!external",
+      "!l10n",
+      "!src",
+      "!test",
+      "!web"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sherylynn/plugins4rmmv.git"
+  },
+  "keywords": [
+    "plugins4rmmv"
+  ],
+  "license": "MIT",
+
   "bugs": {
     "url": "https://github.com/sherylynn/plugins4rmmv/issues"
   },

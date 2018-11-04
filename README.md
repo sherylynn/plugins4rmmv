@@ -1,8 +1,11 @@
 # plugins4rmmv
-plugins for rmmv
+
+## plugins for rmmv
+
 可以结合作arpg使用，也可以单独作为开发的环境，支持热更新热加载，包含了cordova打包apk的功能
 
-# how to use
+## how to use
+
 浅克隆
 git clone --depth 1 https://sherylynn.win/p/plugins4rmmv
 
@@ -23,7 +26,8 @@ npm install
 
 npm run dev
 
-# 结合自己项目
+## 结合自己项目
+
 将项目文件拷贝直接进game文件夹
 
 删除src下脚本，将自己需要写的插件放入src，入口文件命名为index.js 模块文件命名为 HMR_1.js
