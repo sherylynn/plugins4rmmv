@@ -60,7 +60,11 @@ let hot_Sprite_Character=()=>{
     },
     initialize(character){
       Sprite_Character_prototype_initialize.apply(this, arguments)
-      character._sprite_character=this
+      //直接绑_xxx=this的模式会影响到保存。换成return that就好
+      let that=this
+      character._sprite_character=()=>{
+        return that
+      }
     }
   })
 }

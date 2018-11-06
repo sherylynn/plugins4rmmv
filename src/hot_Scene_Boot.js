@@ -13,7 +13,9 @@ let hot_Scene_Boot=()=>{
       this.checkPlayerLocation();
       DataManager.setupNewGame();
       //SceneManager.goto(Scene_TankWarTitle)
+      //取消注释打开默认标题
       //SceneManager.goto(Scene_Title);
+      //取消注释关闭标题
       SceneManager.goto(Scene_Map);
       Window_TitleCommand.initCommandPosition();
     }

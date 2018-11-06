@@ -10,10 +10,12 @@ let hot_Scene_Map=()=>{
     createAllWindows(){
       Scene_Map_createAllWindows.call(this)
       console.log('加载Winbar')
-      this.addWindow(new Window_Bar($gamePlayer))
-      for(let _e of $gameMap.events()){
-        this.addWindow(new Window_Bar(_e))
-      }
+      if(true){
+        //因为影响到了保存，所以把血条系统关掉，似乎是在遍历的时候遍历不到什么所以没法保存？不知道
+        this.addWindow(new Window_Bar($gamePlayer))
+        for(let _e of $gameMap.events()){
+          this.addWindow(new Window_Bar(_e))
+        }}
     },
     //鼠标触发事件
     _startEventByTouch(x,y,triggers,normal){
