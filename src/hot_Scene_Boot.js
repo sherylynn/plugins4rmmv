@@ -13,10 +13,17 @@ let hot_Scene_Boot=()=>{
       this.checkPlayerLocation();
       DataManager.setupNewGame();
       //SceneManager.goto(Scene_TankWarTitle)
-      //取消注释打开默认标题
-      //SceneManager.goto(Scene_Title);
+      //npm run dev 时候跳过标题 localhost electron 的时候有标题
+      if(window.location.host=='127.0.0.1:8080'){
+        //跳过标题
+        SceneManager.goto(Scene_Map);
+      }else{
+        //打开默认标题
+        SceneManager.goto(Scene_Title);
+      }
+
       //取消注释关闭标题
-      SceneManager.goto(Scene_Map);
+
       Window_TitleCommand.initCommandPosition();
     }
     this.updateDocumentTitle();
