@@ -51,6 +51,31 @@ let hot_Game_Interpreter=()=>{
         //$fuck_new.z=new_z
       }
     },
+    _gif(name){
+      let id = name.split('.')[0]
+      //通过是否执行过判断，而不是通过是否存在判断，不好
+      if (this._self()._gif_id != id) {
+        let _img = document.createElement("img")
+        let z = 100
+        _img.id = id
+        _img.src = "img/pictures/" + name
+        //获取画布的margin属性
+        //getComputedStyle(GameCanvas).margin
+        _img.style = "z-index: " + z + "; position: absolute; margin: " + getComputedStyle(GameCanvas).margin + "; left:" + (this._self().screenX()-_img.width) + "px;" + "top:" + (this._self().screenY()-_img.height) + "px;"
+        //设置index后没有在透明的canvas后显示，把canvas设置成透明也不行
+        //GameCanvas.style.background="rgba(255,255,255,0)"
+
+
+        document.body.appendChild(_img)
+        this._self()._gif_id = id
+      }
+    },
+    _gif_remove(name){
+      if(document.getElementById(name)){
+        document.body.removeChild(document.getElementById(name))
+      }
+
+    },
     _self(){
       return $gameMap._events[this._eventId]
     },
